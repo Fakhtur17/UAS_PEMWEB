@@ -45,11 +45,14 @@
                      class="btn btn-sm btn-secondary">
                     <i class="fa fa-edit"></i>
                   </a>
-                  <button wire:click="delete({{ $p->id }})"
-                          class="btn btn-sm btn-secondary"
-                          onclick="return confirm('Yakin menghapus data ini?')">
+                  <button dusk="delete-{{ $p->id }}"
+                        wire:click="delete({{ $p->id }})"
+                        wire:loading.attr="disabled"
+                        class="btn btn-sm btn-secondary"
+                        onclick="return confirm('Yakin menghapus data ini?')">
                     <i class="fa fa-trash"></i>
-                  </button>
+                </button>
+
                 </td>
               </tr>
             @empty

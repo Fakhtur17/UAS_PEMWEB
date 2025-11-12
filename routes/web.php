@@ -21,6 +21,7 @@ use App\Livewire\Anggota\AnggotaEdit;
 use App\Livewire\Peminjaman\PeminjamanIndex;
 use App\Livewire\Peminjaman\PeminjamanCreate;
 use App\Livewire\Peminjaman\PeminjamanEdit;
+use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
@@ -60,5 +61,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/peminjaman/{id}/edit', PeminjamanEdit::class)->name('peminjaman.edit');
 
 });
+
+ // ← tambah import ini
+
+// Aktif hanya saat environment testing (dipakai Dusk)
+Route::get('/__dusk/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/login');
+})->middleware('throttle:5,1')->name('__dusk.logout');
 
 require __DIR__.'/auth.php';

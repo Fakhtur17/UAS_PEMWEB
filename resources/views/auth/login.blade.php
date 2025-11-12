@@ -97,21 +97,28 @@
     <div class="nav-header">
         @if (Route::has('login'))
             @auth
-                <a href="{{ url('/dashboard') }}">
+                <a href="{{ url('/dashboard') }}" dusk="dashboard-link">
                     <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                    @csrf
+                    <button type="submit" dusk="logout-button" class="btn btn-link text-danger p-0" style="text-decoration:none;">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </form>
             @else
-                <a href="{{ route('login') }}">
+                <a href="{{ route('login') }}" dusk="login-link">
                     <i class="bi bi-box-arrow-in-right"></i> Login
                 </a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}">
+                    <a href="{{ route('register') }}" dusk="register-link">
                         <i class="bi bi-person-plus"></i> Register
                     </a>
                 @endif
             @endauth
         @endif
     </div>
+
 
     <!-- Login Card -->
     <div class="login-container">
@@ -137,12 +144,12 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" required autofocus class="form-control">
+                    <input type="email" id="email" dusk="email" name="email" required autofocus class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" name="password" required class="form-control">
+                    <input type="password" id="password" dusk="password" name="password" required class="form-control">
                 </div>
 
                 <div class="mb-3 form-check">
@@ -150,7 +157,7 @@
                     <label class="form-check-label" for="remember">Remember me</label>
                 </div>
 
-                <button type="submit" class="btn btn-pink">
+                <button type="submit" dusk="login-button" class="btn btn-pink">
                     <i class="bi bi-box-arrow-in-right me-1"></i> Login
                 </button>
             </form>

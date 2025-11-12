@@ -11,7 +11,7 @@
       <form wire:submit="simpan">
         <div class="mb-3">
           <label for="anggota_id" class="form-label fw-semibold">Anggota</label>
-          <select id="anggota_id" wire:model.live="anggota_id"
+          <select id="anggota_id" dusk="anggota_id" wire:model.live="anggota_id"
                   class="form-select @error('anggota_id') is-invalid @enderror">
             <option value="">-- Pilih Anggota --</option>
             @foreach($anggotas as $a)
@@ -25,7 +25,7 @@
 
         <div class="mb-3">
           <label for="buku_id" class="form-label fw-semibold">Buku</label>
-          <select id="buku_id" wire:model.live="buku_id"
+          <select id="buku_id" dusk="buku_id" wire:model.live="buku_id"
                   class="form-select @error('buku_id') is-invalid @enderror">
             <option value="">-- Pilih Buku --</option>
             @foreach($bukus as $b)
@@ -40,18 +40,18 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="tanggal_pinjam" class="form-label fw-semibold">Tanggal Pinjam</label>
-            <input id="tanggal_pinjam" type="date"
-                   wire:model.live="tanggal_pinjam"
-                   class="form-control @error('tanggal_pinjam') is-invalid @enderror">
+            <input id="tanggal_pinjam" dusk="tanggal_pinjam" type="date"
+                  wire:model.live="tanggal_pinjam"
+                  class="form-control @error('tanggal_pinjam') is-invalid @enderror">
             @error('tanggal_pinjam')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror
           </div>
           <div class="col-md-6 mb-3">
             <label for="tanggal_kembali" class="form-label fw-semibold">Tanggal Kembali</label>
-            <input id="tanggal_kembali" type="date"
-                   wire:model.live="tanggal_kembali"
-                   class="form-control @error('tanggal_kembali') is-invalid @enderror">
+            <input id="tanggal_kembali" dusk="tanggal_kembali" type="date"
+                  wire:model.live="tanggal_kembali"
+                  class="form-control @error('tanggal_kembali') is-invalid @enderror">
             @error('tanggal_kembali')
               <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -62,7 +62,7 @@
           <a href="{{ route('peminjaman.index') }}" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Kembali
           </a>
-          <button type="submit" class="btn btn-secondary">
+          <button type="submit" dusk="submit" class="btn btn-secondary">
             <i class="bi bi-save"></i> Simpan
           </button>
         </div>

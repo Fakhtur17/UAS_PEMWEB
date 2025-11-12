@@ -1,5 +1,14 @@
 <x-app-layout>
     <div class="container-fluid px-4 py-2">
+        <!-- Tombol Logout -->
+        <div class="d-flex justify-content-end mb-3">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" dusk="logout-button" class="btn btn-outline-danger">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+            </form>
+        </div>
         <main>
             <!-- Judul -->
             <div class="mb-2">
